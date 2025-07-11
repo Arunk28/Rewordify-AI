@@ -41,7 +41,7 @@ We do **not** store, track, or log any data. Your input text is:
 - Routed through a proxy backend (Lambda) for security
 - Never saved or shared beyond what’s required for generating a rewritten version
 
-Read the full [Privacy Policy]([PRIVACY.md](https://github.com/Arunk28/Rewordify-AI/blob/main/PrivacyPolicy.md))
+Read the full [Privacy Policy](https://github.com/Arunk28/Rewordify-AI/blob/main/PrivacyPolicy.md)
 
 ---
 
