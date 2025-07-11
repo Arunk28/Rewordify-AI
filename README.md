@@ -9,7 +9,7 @@ Polish your writing with one click — anywhere on the web. This Chrome extensio
 ## 🚀 Features
 
 - 🧠 Rewrite and improve your writing using AI
-- ⚡ Works on all websites with `<input>`, `<textarea>`, or `contenteditable` fields
+- ⚡ Works on all websites with  `aria-label` amd `contenteditable=true` fields
 - 🔐 Secure: Sends text via a proxy backend to hide the API key
 - 🛡️ No tracking, no analytics, no data stored
 - 💯 Open source under the [MIT License](LICENSE)
