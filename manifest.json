@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Rewordify-AI",
+  "version": "1.0",
+  "description": "Injects AI button to polish input text using OpenRouter.",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "icon.png"
+  }
+}
