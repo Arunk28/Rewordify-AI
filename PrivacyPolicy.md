@@ -1,7 +1,7 @@
 Privacy Policy
 Last updated: July 11, 2025
 
-We take your privacy seriously. The AI Text Polisher Chrome Extension is designed to operate with the minimum necessary permissions, with no tracking, logging, or analytics.
+We take your privacy seriously. The Rewordify-AI Chrome Extension is designed to operate with the minimum necessary permissions, with no tracking, logging, or analytics.
 
 🔍 What This Extension Does
 Adds an AI icon next to text inputs, textareas, or contenteditable fields.
