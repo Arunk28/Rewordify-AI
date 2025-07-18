@@ -1,5 +1,5 @@
 // Replace with your actual Lambda function URL
-const LAMBDA_URL = "https://dbnn5yow7n6hnckltm57ghtolu0jgcth.lambda-url.us-east-1.on.aws/";
+const LAMBDA_URL = process.ENV.LAMBDAURL;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "polishText") {
