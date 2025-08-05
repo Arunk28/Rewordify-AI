@@ -1,7 +1,7 @@
 let currentSettings = {
   contentEditable: true,
-  textarea: true,
-  input: true
+  textarea: false,
+  input: false
 };
 
 // Load settings on initialization
