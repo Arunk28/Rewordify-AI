@@ -1,13 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Rewordify-AI",
-  "version": "1.0",
-  "description": "Injects AI button to polish input text using OpenRouter.",
-  "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["<all_urls>"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "version": "1.1.0",
+  "description": "Rewrite and polish text with AI in any input box or editor. Improve your writing instantly on any website.",
+  "author": "Your Name",
+  "homepage_url": "https://github.com/yourusername/rewordify-ai",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -15,7 +12,34 @@
       "run_at": "document_idle"
     }
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Rewordify-AI Settings",
+    "default_icon": {
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
   "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
     "128": "icon.png"
-  }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

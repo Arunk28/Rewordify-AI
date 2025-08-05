@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewordify-AI Settings</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <div class="header">
+            <img src="icon.png" alt="Rewordify-AI" class="logo">
+            <h1>Rewordify-AI</h1>
+        </div>
+        
+        <div class="settings-section">
+            <h2>Target Element Settings</h2>
+            <div class="setting-item">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="contentEditable" checked>
+                    <span class="slider"></span>
+                </label>
+                <div class="setting-label-group">
+                    <span class="setting-label">Content editable elements</span>
+                    <span class="info-icon" data-tooltip="Applies to elements with contenteditable='true'">ⓘ</span>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="textarea" checked>
+                    <span class="slider"></span>
+                </label>
+                <div class="setting-label-group">
+                    <span class="setting-label">Textarea elements</span>
+                    <span class="info-icon" data-tooltip="Applies to all &lt;textarea&gt; elements">ⓘ</span>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="input" checked>
+                    <span class="slider"></span>
+                </label>
+                <div class="setting-label-group">
+                    <span class="setting-label">Input elements</span>
+                    <span class="info-icon" data-tooltip="Applies to text &lt;input&gt; elements (text, email, search, etc.)">ⓘ</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quick-convert-section">
+            <h2>Quick Convert</h2>
+            <textarea id="quickText" placeholder="Enter text to rewordify..."></textarea>
+            <button id="convertBtn" class="convert-btn">
+                <span class="btn-text">Rewordify</span>
+                <span class="btn-spinner" style="display: none;">Converting...</span>
+            </button>
+        </div>
+        
+        <div class="footer">
+            <small>Click the AI icons on any webpage to rewordify text!</small>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
