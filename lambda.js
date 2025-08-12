@@ -156,11 +156,6 @@ export async function handler(event) {
       };
     }
     
-    console.log('Received request:', JSON.stringify({ 
-      mode: body.mode, 
-      submode: body.submode, 
-      textLength: body.text?.length 
-    }));
 
 
     const userText = body.text;
@@ -180,8 +175,6 @@ export async function handler(event) {
     const systemPrompt = promptTemplate.system;
     const userPrompt = promptTemplate.user(userText);
     
-    console.log('Using mode:', mode, 'submode:', submode);
-    console.log('System prompt:', systemPrompt);
     
     const MODEL = process.env.WHICH_MODEL || 'openai/gpt-3.5-turbo';
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -203,17 +196,14 @@ export async function handler(event) {
 
     if (!res.ok) {
       const errorData = await res.text();
-      console.error('OpenRouter API error:', res.status, errorData);
       throw new Error(`OpenRouter API failed: ${res.status}`);
     }
     
     const data = await res.json();
-    console.log('OpenRouter response structure:', Object.keys(data));
     
     const polishedText = data.choices?.[0]?.message?.content?.trim();
     
     if (!polishedText) {
-      console.error('No content in response:', data);
       throw new Error('No content received from AI model');
     }
 
@@ -229,7 +219,6 @@ export async function handler(event) {
       })
     };
   } catch (error) {
-    console.error(error);
     return {
       statusCode: 500,
       headers: { "Access-Control-Allow-Origin": "*" },

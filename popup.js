@@ -34,7 +34,6 @@ async function loadSettings() {
     document.getElementById('dropdownPosition').value = result.dropdownPosition;
     document.getElementById('preferredSide').value = result.preferredSide;
   } catch (error) {
-    console.error('Error loading settings:', error);
   }
 }
 
@@ -61,7 +60,6 @@ async function saveSettings() {
       });
     });
   } catch (error) {
-    console.error('Error saving settings:', error);
   }
 }
 
@@ -130,10 +128,8 @@ async function handleQuickConvert(text) {
       submode: submode
     });
     
-    console.log('📥 Quick Convert Response:', response);
     
     if (response && response.polishedText) {
-      console.log('✅ Setting polished text:', response.polishedText);
       quickText.value = response.polishedText;
       // Auto-select the result for easy copying
       quickText.select();
@@ -143,7 +139,6 @@ async function handleQuickConvert(text) {
       await updateAnalytics(mode, submode, text.length, response.polishedText.length);
       await loadAnalytics(); // Refresh display
     } else {
-      console.error('❌ Invalid response in Quick Convert:', response);
       if (response && response.error) {
         alert(`Error: ${response.error}`);
       } else {
@@ -151,7 +146,6 @@ async function handleQuickConvert(text) {
       }
     }
   } catch (error) {
-    console.error('Error during quick convert:', error);
     alert('Error occurred while rewordifying. Please try again.');
   } finally {
     // Restore button state
@@ -184,7 +178,6 @@ async function loadAnalytics() {
     updateModeChart(analytics.modeUsage);
     
   } catch (error) {
-    console.error('Error loading analytics:', error);
   }
 }
 
@@ -211,7 +204,6 @@ async function updateAnalytics(mode, submode, originalLength, processedLength) {
     
     await chrome.storage.local.set({ analytics });
   } catch (error) {
-    console.error('Error updating analytics:', error);
   }
 }
 

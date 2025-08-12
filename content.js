@@ -38,14 +38,11 @@ let currentTargetElement = null;
 
 // Load settings on initialization
 async function loadSettings() {
-  console.log('⚙️ Loading settings...');
   try {
     const result = await chrome.storage.sync.get(currentSettings);
     currentSettings = result;
-    console.log('✅ Settings loaded:', currentSettings);
   } catch (error) {
-    console.error('❌ Error loading settings:', error);
-    console.log('🔄 Using default settings:', currentSettings);
+    console.error('Error loading settings:', error);
   }
 }
 
@@ -77,35 +74,28 @@ function removeAllAIIcons() {
 }
 
 function getTargetElements() {
-  console.log('🔍 Getting target elements on:', window.location.hostname);
-  console.log('📊 Current settings:', currentSettings);
-  
   const elements = [];
   
   // Get contenteditable elements
   if (currentSettings.contentEditable) {
     const contentEditableElements = document.querySelectorAll('[contenteditable="true"]');
-    console.log('📝 Found contenteditable elements:', contentEditableElements.length);
     elements.push(...Array.from(contentEditableElements));
   }
   
   // Get textarea elements
   if (currentSettings.textarea) {
     const textareaElements = document.querySelectorAll('textarea');
-    console.log('📄 Found textarea elements:', textareaElements.length);
     elements.push(...Array.from(textareaElements));
   }
   
   // Get input elements (text-based only)
   if (currentSettings.input) {
     const inputElements = document.querySelectorAll('input[type="text"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="password"], input:not([type])');
-    console.log('📝 Found input elements:', inputElements.length);
     elements.push(...Array.from(inputElements));
   }
   
   // Add platform-specific elements
   const platformElements = getPlatformSpecificElements();
-  console.log('🌐 Found platform-specific elements:', platformElements.length);
   elements.push(...platformElements);
   
   console.log('🔄 Processing', elements.length, 'elements before filtering');

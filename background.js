@@ -12,8 +12,6 @@ const RATE_LIMIT = {
 // Request timeout configuration
 const REQUEST_TIMEOUT = 30000; // 30 seconds
 
-// Log extension startup
-console.log('✅ Rewordify-AI background script loaded');
 
 // Enhanced message listener with error handling and rate limiting
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -53,12 +51,6 @@ async function handlePolishTextRequest(request, sender, sendResponse) {
       timestamp: request.timestamp || Date.now()
     };
     
-    console.log('📤 Sending to Lambda:', {
-      mode: payload.mode,
-      submode: payload.submode,
-      textLength: payload.text.length,
-      timestamp: new Date(payload.timestamp).toISOString()
-    });
     
     // Create abort controller for timeout
     const controller = new AbortController();
@@ -95,21 +87,12 @@ async function handlePolishTextRequest(request, sender, sendResponse) {
       }
       
       const data = await response.json();
-      console.log('📥 Raw Lambda response:', data);
       
       // Validate response
       if (!data || !data.polishedText || typeof data.polishedText !== 'string') {
-        console.error('❌ Invalid Lambda response structure:', data);
         throw new Error('Invalid response format from AI service');
       }
       
-      console.log('📥 Lambda response:', {
-        success: true,
-        originalLength: request.text.length,
-        processedLength: data.polishedText.length,
-        mode: data.mode || payload.mode,
-        submode: data.submode || payload.submode
-      });
       
       sendResponse({ 
         polishedText: data.polishedText,
@@ -132,11 +115,6 @@ async function handlePolishTextRequest(request, sender, sendResponse) {
         errorMessage = fetchError.message;
       }
       
-      console.error("❌ Error calling Lambda:", {
-        error: fetchError.message,
-        name: fetchError.name,
-        stack: fetchError.stack
-      });
       
       sendResponse({ 
         polishedText: request.text,
@@ -145,7 +123,6 @@ async function handlePolishTextRequest(request, sender, sendResponse) {
     }
     
   } catch (error) {
-    console.error("❌ Unexpected error in handlePolishTextRequest:", error);
     sendResponse({ 
       polishedText: request.text,
       error: 'An unexpected error occurred. Please try again.'
@@ -198,17 +175,7 @@ function checkRateLimit() {
   return true;
 }
 
-// Handle extension errors
-chrome.runtime.onSuspend.addListener(() => {
-  console.log('🛑 Rewordify-AI background script suspended');
-});
-
-chrome.runtime.onStartup.addListener(() => {
-  console.log('✅ Rewordify-AI extension started');
-});
-
 chrome.runtime.onInstalled.addListener((details) => {
-  console.log('✅ Rewordify-AI extension installed/updated:', details.reason);
   
   if (details.reason === 'install') {
     // Set default settings on install
