@@ -3,7 +3,7 @@
   "name": "Rewordify-AI",
   "version": "2.2.0",
   "description": "Multi-modal AI writing assistant with 8 modes: rewrite, tone adjustment, length control, style changes, translation, grammar, clarity, and summarization. Works on any website.",
-  "author": "Your Name",
+  "author": "Arun Kumar",
   "homepage_url": "https://github.com/yourusername/rewordify-ai",
   "content_scripts": [
     {
