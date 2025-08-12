@@ -13,6 +13,41 @@
             <h1>Rewordify-AI</h1>
         </div>
         
+        <div class="quick-convert-section">
+            <h2>Quick Convert</h2>
+            <div class="mode-selector-wrapper">
+                <select id="quickMode" class="mode-selector">
+                    <option value="rewrite">✨ Rewrite</option>
+                    <option value="tone_professional">🎭 Professional Tone</option>
+                    <option value="tone_casual">🎭 Casual Tone</option>
+                    <option value="tone_friendly">🎭 Friendly Tone</option>
+                    <option value="tone_formal">🎭 Formal Tone</option>
+                    <option value="length_expand">📏 Expand</option>
+                    <option value="length_condense">📏 Condense</option>
+                    <option value="length_bullets">📏 Bullet Points</option>
+                    <option value="style_academic">🎨 Academic Style</option>
+                    <option value="style_creative">🎨 Creative Style</option>
+                    <option value="style_technical">🎨 Technical Style</option>
+                    <option value="style_marketing">🎨 Marketing Style</option>
+                    <option value="translate_spanish">🌐 Translate to Spanish</option>
+                    <option value="translate_french">🌐 Translate to French</option>
+                    <option value="translate_german">🌐 Translate to German</option>
+                    <option value="translate_italian">🌐 Translate to Italian</option>
+                    <option value="translate_portuguese">🌐 Translate to Portuguese</option>
+                    <option value="translate_chinese">🌐 Translate to Chinese</option>
+                    <option value="translate_japanese">🌐 Translate to Japanese</option>
+                    <option value="grammar">✅ Fix Grammar</option>
+                    <option value="clarity">💡 Improve Clarity</option>
+                    <option value="summarize">📝 Summarize</option>
+                </select>
+            </div>
+            <textarea id="quickText" placeholder="Enter text to rewordify..."></textarea>
+            <button id="convertBtn" class="convert-btn">
+                <span class="btn-text">Rewordify</span>
+                <span class="btn-spinner" style="display: none;">Converting...</span>
+            </button>
+        </div>
+        
         <div class="settings-section">
             <h2>Target Element Settings</h2>
             <div class="setting-item">
@@ -49,13 +84,56 @@
             </div>
         </div>
         
-        <div class="quick-convert-section">
-            <h2>Quick Convert</h2>
-            <textarea id="quickText" placeholder="Enter text to rewordify..."></textarea>
-            <button id="convertBtn" class="convert-btn">
-                <span class="btn-text">Rewordify</span>
-                <span class="btn-spinner" style="display: none;">Converting...</span>
-            </button>
+        <div class="settings-section">
+            <h2>Dropdown Position Settings</h2>
+            
+            <div class="setting-item">
+                <label class="dropdown-label">Position</label>
+                <select id="dropdownPosition" class="position-selector">
+                    <option value="smart">Smart Auto-Position</option>
+                    <option value="left">Always Left</option>
+                    <option value="right">Always Right</option>
+                    <option value="top">Always Above</option>
+                    <option value="bottom">Always Below</option>
+                </select>
+            </div>
+            
+            <div class="setting-item">
+                <label class="dropdown-label">Preferred Side (Smart Mode)</label>
+                <select id="preferredSide" class="position-selector">
+                    <option value="right">Right Side</option>
+                    <option value="left">Left Side</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="analytics-section">
+            <h2>Analytics Dashboard</h2>
+            <div class="analytics-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalUsage">0</div>
+                    <div class="stat-label">Total Improvements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="todayUsage">0</div>
+                    <div class="stat-label">Today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="wordsImproved">0</div>
+                    <div class="stat-label">Words Improved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="timeSaved">0m</div>
+                    <div class="stat-label">Time Saved</div>
+                </div>
+            </div>
+            
+            <div class="mode-usage">
+                <h3>Most Used Modes</h3>
+                <div id="modeChart" class="mode-chart">
+                    <div class="no-data">Start using AI modes to see statistics</div>
+                </div>
+            </div>
         </div>
         
         <div class="footer">
